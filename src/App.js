@@ -9,8 +9,6 @@ import store from './store';
 import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 
-
-
 axios.defaults.baseURL = 'http://jsonplaceholder.typicode.com';
 
 function App() {
