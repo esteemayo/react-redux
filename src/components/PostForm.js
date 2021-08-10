@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { newPost } from '../actions/postActions';
+import TextArea from './TextArea';
+import Button from './Button';
+import Input from './Input';
 
 class PostForm extends Component {
     state = {
@@ -28,26 +31,19 @@ class PostForm extends Component {
             <div>
                 <h1>Add Post</h1>
                 <form onSubmit={this.handleSubmit}>
-                    <div>
-                        <label htmlFor='title'>Title</label><br />
-                        <input
-                            type='text'
-                            name='title'
-                            id='title'
-                            onChange={this.handleChange}
-                        />
-                    </div>
+                    <Input
+                        name='title'
+                        label='Title'
+                        onChange={this.handleChange}
+                    />
                     <br />
-                    <div>
-                        <label htmlFor='body'>Body</label><br />
-                        <textarea
-                            name='body'
-                            id='body'
-                            onChange={this.handleChange}
-                        ></textarea>
-                    </div>
+                    <TextArea
+                        name='body'
+                        label='Body'
+                        onChange={this.handleChange}
+                    />
                     <br />
-                    <button type='submit'>Submit</button>
+                    <Button text='Submit' />
                 </form>
             </div>
         );
@@ -58,4 +54,8 @@ PostForm.propTypes = {
     newPost: PropTypes.func.isRequired,
 };
 
-export default connect(null, { newPost })(PostForm);
+const mapDispatchToProps = {
+    newPost,
+};
+
+export default connect(null, mapDispatchToProps)(PostForm);
